@@ -1,0 +1,1494 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>C++ — Potência, Desempenho e Tecnologia</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080b10;
+            color: #f1f5f9;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           NAVEGAÇÃO
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(8, 11, 16, 0.95);
+
+            border-bottom: 1px solid #26303c;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+
+            height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 25px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+
+            color: #00d084;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00d084;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 90vh;
+
+            max-width: 1200px;
+            margin: auto;
+
+            padding: 100px 25px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            align-items: center;
+            gap: 60px;
+        }
+
+        .tag {
+            color: #00d084;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            letter-spacing: 3px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+
+            line-height: 1.05;
+
+            margin: 20px 0;
+        }
+
+        .hero h1 span {
+            color: #00d084;
+        }
+
+        .hero p {
+            color: #9ca8b7;
+
+            font-size: 18px;
+
+            max-width: 600px;
+        }
+
+        .buttons {
+            margin-top: 30px;
+
+            display: flex;
+            gap: 15px;
+        }
+
+        .button {
+            padding: 14px 25px;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: #00d084;
+            color: #04100a;
+        }
+
+        .primary:hover {
+            transform: translateY(-3px);
+        }
+
+        .secondary {
+            border: 1px solid #33404f;
+            color: white;
+        }
+
+        .secondary:hover {
+            border-color: #00d084;
+        }
+
+        /* =========================
+           CÓDIGO
+        ========================= */
+
+        .code-box {
+            background: #0e131a;
+
+            border: 1px solid #293441;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .code-header {
+            height: 45px;
+
+            border-bottom: 1px solid #293441;
+
+            display: flex;
+            align-items: center;
+
+            padding-left: 18px;
+
+            gap: 7px;
+        }
+
+        .dot {
+            width: 11px;
+            height: 11px;
+
+            border-radius: 50%;
+
+            background: #475569;
+        }
+
+        pre {
+            padding: 25px;
+
+            overflow-x: auto;
+
+            font-family: Consolas, monospace;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+        .purple {
+            color: #c084fc;
+        }
+
+        .blue {
+            color: #60a5fa;
+        }
+
+        .green {
+            color: #4ade80;
+        }
+
+        .orange {
+            color: #fb923c;
+        }
+
+        /* =========================
+           SEÇÕES
+        ========================= */
+
+        section {
+            padding: 100px 25px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 48px;
+
+            margin-top: 10px;
+        }
+
+        .section-title h2 span {
+            color: #00d084;
+        }
+
+        /* =========================
+           SOBRE
+        ========================= */
+
+        .about {
+            background: #0c1016;
+        }
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 60px;
+        }
+
+        .about-text p {
+            color: #aab5c3;
+
+            margin-bottom: 20px;
+
+            font-size: 17px;
+        }
+
+        .highlight {
+            color: #00d084;
+            font-weight: bold;
+        }
+
+        .stats {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+        }
+
+        .stat {
+            padding: 25px;
+
+            background: #111720;
+
+            border: 1px solid #26313d;
+
+            border-radius: 10px;
+        }
+
+        .stat h3 {
+            font-size: 30px;
+
+            color: #00d084;
+        }
+
+        .stat p {
+            color: #8995a5;
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .card {
+            padding: 30px;
+
+            background: #10161e;
+
+            border: 1px solid #27323e;
+
+            border-radius: 10px;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+
+            border-color: #00d084;
+        }
+
+        .icon {
+            font-size: 35px;
+
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #929dac;
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           CONCEITOS
+        ========================= */
+
+        .concepts {
+            background: #0c1016;
+        }
+
+        .concept-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+        .concept {
+            background: #10161e;
+
+            border: 1px solid #27323e;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+
+        .concept h3 {
+            padding: 20px 25px;
+
+            color: #00d084;
+        }
+
+        .concept p {
+            color: #9ba6b5;
+
+            padding: 0 25px 15px;
+        }
+
+        .concept pre {
+            background: #080b10;
+        }
+
+        /* =========================
+           EXEMPLO
+        ========================= */
+
+        .example {
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(0,208,132,0.08),
+                    transparent 50%
+                );
+        }
+
+        .example-box {
+            max-width: 900px;
+
+            margin: auto;
+
+            background: #0d1219;
+
+            border: 1px solid #293440;
+
+            border-radius: 12px;
+        }
+
+        .explanation {
+            max-width: 900px;
+
+            margin: 25px auto 0;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+        .explanation div {
+            padding: 20px;
+
+            border: 1px solid #26313d;
+
+            border-radius: 8px;
+
+            background: #0f141c;
+        }
+
+        .explanation strong {
+            color: #00d084;
+        }
+
+        .explanation p {
+            color: #8f9baa;
+
+            font-size: 13px;
+
+            margin-top: 8px;
+        }
+
+        /* =========================
+           C++ X PYTHON
+        ========================= */
+
+        .comparison {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+        .language {
+            background: #10161e;
+
+            border: 1px solid #293440;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+
+        .language-title {
+            padding: 25px;
+
+            display: flex;
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .language-title h3 {
+            font-size: 25px;
+        }
+
+        .language-title span {
+            color: #00d084;
+
+            font-size: 12px;
+        }
+
+        .language ul {
+            padding: 25px 45px;
+
+            color: #a0abba;
+        }
+
+        /* =========================
+           VANTAGENS
+        ========================= */
+
+        .advantages {
+            background: #0c1016;
+        }
+
+        .advantage-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .advantage {
+            padding: 30px;
+
+            background: #10161e;
+
+            border: 1px solid #27323e;
+
+            border-radius: 10px;
+        }
+
+        .advantage h3 {
+            color: #00d084;
+
+            margin-bottom: 10px;
+        }
+
+        .advantage p {
+            color: #909bab;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid #26303b;
+
+            padding: 60px 25px;
+
+            text-align: center;
+        }
+
+        footer h2 {
+            color: #00d084;
+
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #687587;
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           RESPONSIVIDADE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .concept-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .advantage-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .explanation {
+                grid-template-columns: 1fr;
+            }
+
+            .advantage-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 35px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     MENU
+========================= -->
+
+<header>
+
+    <nav>
+
+        <div class="logo">
+            &lt;<span>C++</span>/&gt;
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="#inicio">Início</a>
+            </li>
+
+            <li>
+                <a href="#sobre">Sobre</a>
+            </li>
+
+            <li>
+                <a href="#aplicacoes">Aplicações</a>
+            </li>
+
+            <li>
+                <a href="#conceitos">Conceitos</a>
+            </li>
+
+            <li>
+                <a href="#codigo">Código</a>
+            </li>
+
+            <li>
+                <a href="#comparacao">Comparação</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================
+     INÍCIO
+========================= -->
+
+<section class="hero" id="inicio">
+
+    <div>
+
+        <span class="tag">
+            LINGUAGEM DE PROGRAMAÇÃO
+        </span>
+
+        <h1>
+            Conheça o
+            <span>C++</span>
+        </h1>
+
+        <p>
+            Uma linguagem conhecida por sua velocidade,
+            eficiência e capacidade de trabalhar próxima
+            ao hardware.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#sobre"
+               class="button primary">
+                Conhecer C++
+            </a>
+
+            <a href="#codigo"
+               class="button secondary">
+                Ver código
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="code-box">
+
+        <div class="code-header">
+
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+
+        </div>
+
+<pre><code><span class="purple">#include</span> &lt;iostream&gt;
+
+<span class="purple">using namespace</span> std;
+
+<span class="blue">int</span> main() {
+
+    cout &lt;&lt;
+    <span class="green">"Olá, mundo!"</span>;
+
+    <span class="purple">return</span> 0;
+}</code></pre>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SOBRE
+========================= -->
+
+<section class="about" id="sobre">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span class="tag">
+                01 — SOBRE
+            </span>
+
+            <h2>
+                O que é
+                <span>C++?</span>
+            </h2>
+
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="about-text">
+
+                <p>
+                    C++ é uma linguagem de programação
+                    criada por <strong>Bjarne Stroustrup</strong>
+                    e lançada comercialmente em 1985.
+                </p>
+
+                <p>
+                    Ela surgiu como uma evolução da linguagem C,
+                    adicionando recursos como classes,
+                    programação orientada a objetos e templates.
+                </p>
+
+                <p>
+                    Uma de suas principais características é
+                    oferecer ao programador bastante controle
+                    sobre os recursos do computador.
+                </p>
+
+                <p>
+                    Por isso, C++ é encontrada em áreas nas quais
+                    <span class="highlight">
+                        desempenho e eficiência
+                    </span>
+                    são importantes.
+                </p>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <h3>1985</h3>
+
+                    <p>
+                        Lançamento comercial do C++
+                    </p>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <h3>STL</h3>
+
+                    <p>
+                        Biblioteca padrão de templates
+                    </p>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <h3>OOP</h3>
+
+                    <p>
+                        Programação orientada a objetos
+                    </p>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <h3>Alta</h3>
+
+                    <p>
+                        Performance e controle
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     APLICAÇÕES
+========================= -->
+
+<section id="aplicacoes">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span class="tag">
+                02 — APLICAÇÕES
+            </span>
+
+            <h2>
+                Onde o C++ é
+                <span>utilizado?</span>
+            </h2>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <div class="icon">
+                    🎮
+                </div>
+
+                <h3>
+                    Jogos
+                </h3>
+
+                <p>
+                    Utilizado em engines e jogos que precisam
+                    de alto desempenho e processamento rápido.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    🤖
+                </div>
+
+                <h3>
+                    Robótica
+                </h3>
+
+                <p>
+                    Pode ser utilizado para controlar sensores,
+                    motores e sistemas de robôs.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    💻
+                </div>
+
+                <h3>
+                    Sistemas
+                </h3>
+
+                <p>
+                    É utilizado em componentes de sistemas,
+                    ferramentas e softwares de baixo nível.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Alto desempenho
+                </h3>
+
+                <p>
+                    Indicado para aplicações nas quais velocidade
+                    e eficiência são importantes.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONCEITOS
+========================= -->
+
+<section class="concepts" id="conceitos">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span class="tag">
+                03 — CONCEITOS
+            </span>
+
+            <h2>
+                Principais
+                <span>recursos</span>
+            </h2>
+
+        </div>
+
+
+        <div class="concept-grid">
+
+
+            <div class="concept">
+
+                <h3>
+                    Variáveis
+                </h3>
+
+                <p>
+                    Guardam informações que podem ser utilizadas
+                    pelo programa.
+                </p>
+
+<pre><code><span class="blue">int</span> idade = 17;
+
+<span class="blue">double</span> altura = 1.75;
+
+<span class="blue">string</span> nome =
+    <span class="green">"Andre"</span>;</code></pre>
+
+            </div>
+
+
+            <div class="concept">
+
+                <h3>
+                    Funções
+                </h3>
+
+                <p>
+                    Permitem organizar o programa em blocos
+                    reutilizáveis.
+                </p>
+
+<pre><code><span class="blue">int</span> somar(
+    <span class="blue">int</span> a,
+    <span class="blue">int</span> b
+) {
+
+    <span class="purple">return</span> a + b;
+}</code></pre>
+
+            </div>
+
+
+            <div class="concept">
+
+                <h3>
+                    Classes
+                </h3>
+
+                <p>
+                    São utilizadas na programação orientada
+                    a objetos.
+                </p>
+
+<pre><code><span class="purple">class</span> Carro {
+
+<span class="purple">public:</span>
+
+    <span class="blue">string</span> modelo;
+
+    <span class="blue">void</span> acelerar() {
+
+        cout &lt;&lt;
+        <span class="green">"Acelerando!"</span>;
+    }
+};</code></pre>
+
+            </div>
+
+
+            <div class="concept">
+
+                <h3>
+                    Vetores
+                </h3>
+
+                <p>
+                    A STL oferece estruturas como vector para
+                    armazenar conjuntos de dados.
+                </p>
+
+<pre><code>vector&lt;<span class="blue">int</span>&gt; numeros = {
+
+    10, 20, 30, 40
+};
+
+<span class="purple">for</span> (
+    <span class="blue">int</span> n : numeros
+) {
+
+    cout &lt;&lt; n;
+}</code></pre>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CÓDIGO
+========================= -->
+
+<section class="example" id="codigo">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span class="tag">
+                04 — NA PRÁTICA
+            </span>
+
+            <h2>
+                Um programa
+                <span>mais completo</span>
+            </h2>
+
+        </div>
+
+
+        <div class="example-box">
+
+<pre><code><span class="purple">#include</span> &lt;iostream&gt;
+<span class="purple">#include</span> &lt;vector&gt;
+<span class="purple">#include</span> &lt;numeric&gt;
+
+<span class="purple">using namespace</span> std;
+
+
+<span class="blue">double</span> calcularMedia(
+    <span class="purple">const</span> vector&lt;<span class="blue">double</span>&gt;&amp; notas
+) {
+
+    <span class="blue">double</span> soma =
+        accumulate(
+            notas.begin(),
+            notas.end(),
+            0.0
+        );
+
+    <span class="purple">return</span>
+        soma / notas.size();
+}
+
+
+<span class="blue">int</span> main() {
+
+    vector&lt;<span class="blue">double</span>&gt; notas = {
+
+        8.5,
+        7.0,
+        9.5,
+        10.0
+    };
+
+
+    <span class="blue">double</span> media =
+        calcularMedia(notas);
+
+
+    cout &lt;&lt;
+        <span class="green">"Media: "</span>
+        &lt;&lt; media
+        &lt;&lt; endl;
+
+
+    <span class="purple">return</span> 0;
+}</code></pre>
+
+        </div>
+
+
+        <div class="explanation">
+
+
+            <div>
+
+                <strong>vector</strong>
+
+                <p>
+                    Estrutura utilizada para armazenar
+                    vários valores.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>função</strong>
+
+                <p>
+                    Organiza uma tarefa específica em
+                    um bloco reutilizável.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>STL</strong>
+
+                <p>
+                    Biblioteca padrão que oferece diversas
+                    ferramentas prontas.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COMPARAÇÃO
+========================= -->
+
+<section id="comparacao">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span class="tag">
+                05 — COMPARAÇÃO
+            </span>
+
+            <h2>
+                C++ ×
+                <span>Python</span>
+            </h2>
+
+        </div>
+
+
+        <div class="comparison">
+
+
+            <div class="language">
+
+                <div class="language-title">
+
+                    <h3>
+                        C++
+                    </h3>
+
+                    <span>
+                        PERFORMANCE
+                    </span>
+
+                </div>
+
+
+<pre><code><span class="blue">int</span> soma(
+    <span class="blue">int</span> a,
+    <span class="blue">int</span> b
+) {
+
+    <span class="purple">return</span> a + b;
+}</code></pre>
+
+
+                <ul>
+
+                    <li>
+                        Linguagem compilada
+                    </li>
+
+                    <li>
+                        Alto desempenho
+                    </li>
+
+                    <li>
+                        Controle de memória
+                    </li>
+
+                    <li>
+                        Utilizada em sistemas e jogos
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="language">
+
+                <div class="language-title">
+
+                    <h3>
+                        Python
+                    </h3>
+
+                    <span>
+                        PRODUTIVIDADE
+                    </span>
+
+                </div>
+
+
+<pre><code><span class="blue">def</span> soma(a, b):
+
+    <span class="purple">return</span> a + b</code></pre>
+
+
+                <ul>
+
+                    <li>
+                        Sintaxe mais simples
+                    </li>
+
+                    <li>
+                        Desenvolvimento rápido
+                    </li>
+
+                    <li>
+                        Grande ecossistema
+                    </li>
+
+                    <li>
+                        Muito utilizado em dados e IA
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     VANTAGENS
+========================= -->
+
+<section class="advantages">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span class="tag">
+                06 — CARACTERÍSTICAS
+            </span>
+
+            <h2>
+                Por que
+                <span>utilizar C++?</span>
+            </h2>
+
+        </div>
+
+
+        <div class="advantage-grid">
+
+
+            <div class="advantage">
+
+                <h3>
+                    ⚡ Velocidade
+                </h3>
+
+                <p>
+                    Programas C++ podem apresentar alto
+                    desempenho e baixo custo de execução.
+                </p>
+
+            </div>
+
+
+            <div class="advantage">
+
+                <h3>
+                    🧠 Controle
+                </h3>
+
+                <p>
+                    A linguagem permite controlar diversos
+                    aspectos relacionados aos recursos do computador.
+                </p>
+
+            </div>
+
+
+            <div class="advantage">
+
+                <h3>
+                    🧩 Flexibilidade
+                </h3>
+
+                <p>
+                    C++ suporta diferentes estilos de programação,
+                    incluindo orientação a objetos e programação genérica.
+                </p>
+
+            </div>
+
+
+            <div class="advantage">
+
+                <h3>
+                    📚 STL
+                </h3>
+
+                <p>
+                    A biblioteca padrão possui estruturas e
+                    algoritmos que facilitam o desenvolvimento.
+                </p>
+
+            </div>
+
+
+            <div class="advantage">
+
+                <h3>
+                    🎮 Jogos
+                </h3>
+
+                <p>
+                    É uma linguagem importante no desenvolvimento
+                    de jogos e motores gráficos.
+                </p>
+
+            </div>
+
+
+            <div class="advantage">
+
+                <h3>
+                    🔧 Sistemas
+                </h3>
+
+                <p>
+                    Pode ser utilizada em softwares que precisam
+                    de eficiência e maior proximidade do hardware.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     RODAPÉ
+========================= -->
+
+<footer>
+
+    <h2>
+        &lt; C++ /&gt;
+    </h2>
+
+    <p>
+        Projeto desenvolvido para apresentação em feira.
+    </p>
+
+    <p>
+        Programação • Tecnologia • Desenvolvimento
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
+```
